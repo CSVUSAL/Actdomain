@@ -1,5 +1,5 @@
 # Actdomain
-Domainlərin aktiv və yaxud qeyri aktiv olub olmamasını yoxlayan tool
+Domainlərin aktivliyini və qeyri aktivliyini yoxlayan tool
 
 #Toolu çalışdırmaq üçün :
 
