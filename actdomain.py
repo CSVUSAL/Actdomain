@@ -32,10 +32,10 @@ if __name__ == "__main__":
 
     active_subdomains, inactive_subdomains = asyncio.run(main(subdomains))
 
-    print(f"{Fore.RED}Aktiv subdomainlər:{Style.RESET_ALL}")
+    print(f"{Fore.RED}Aktiv Domainlər:{Style.RESET_ALL}")
     for sub in active_subdomains:
         print(f"{Fore.GREEN}{sub}{Style.RESET_ALL}")
 
-    print(f"\n{Fore.RED}Aktiv olmayan subdomainlər:{Style.RESET_ALL}")
+    print(f"\n{Fore.RED}Aktiv olmayan Domainlər:{Style.RESET_ALL}")
     for sub in inactive_subdomains:
         print(f"{Fore.GREEN}{sub}{Style.RESET_ALL}")
