@@ -26,7 +26,7 @@ async def main(subdomains):
         return list(set(active_subdomains)), list(set(redirect_subdomains)), list(set(inactive_subdomains))
 
 if __name__ == "__main__":
-    print("Subdomainləri daxil edin (Daxil etdikdən sonra Enteri vurun):")
+    print("Domainləri daxil edin (Daxil etdikdən sonra Enteri vurun):")
     subdomains = []
     while True:
         subdomain = input()
