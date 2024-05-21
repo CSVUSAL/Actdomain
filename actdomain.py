@@ -1,6 +1,7 @@
 import asyncio
 import aiohttp
 from colorama import Fore, Style
+import re
 
 async def check_subdomain(subdomain, session):
     url = f"http://{subdomain}"
@@ -28,14 +29,22 @@ if __name__ == "__main__":
         subdomain = input()
         if not subdomain:
             break
-        subdomains.append(subdomain.strip())
+        # Remove 'http://' and 'https://' from the input
+        subdomain = re.sub(r'^https?://', '', subdomain.strip())
+        subdomains.append(subdomain)
 
     active_subdomains, inactive_subdomains = asyncio.run(main(subdomains))
 
-    print(f"{Fore.RED}Aktiv Domainlər:{Style.RESET_ALL}")
-    for sub in active_subdomains:
-        print(f"{Fore.GREEN}{sub}{Style.RESET_ALL}")
+    if active_subdomains:
+        print(f"{Fore.RED}Aktiv Domainlər:{Style.RESET_ALL}")
+        for sub in active_subdomains:
+            print(f"{Fore.GREEN}{sub}{Style.RESET_ALL}")
+    else:
+        print(f"{Fore.RED}Aktiv Domain yoxdur.{Style.RESET_ALL}")
 
-    print(f"\n{Fore.RED}Aktiv olmayan Domainlər:{Style.RESET_ALL}")
-    for sub in inactive_subdomains:
-        print(f"{Fore.GREEN}{sub}{Style.RESET_ALL}")
+    if inactive_subdomains:
+        print(f"\n{Fore.RED}Aktiv olmayan Domainlər:{Style.RESET_ALL}")
+        for sub in inactive_subdomains:
+            print(f"{Fore.GREEN}{sub}{Style.RESET_ALL}")
+    else:
+        print(f"\n{Fore.RED}Aktiv olmayan Domain yoxdur.{Style.RESET_ALL}")
