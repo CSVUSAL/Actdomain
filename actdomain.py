@@ -20,10 +20,10 @@ async def main(subdomains):
         results = await asyncio.gather(*tasks, return_exceptions=True)
         active_subdomains = [result[0] for result in results if isinstance(result, tuple) and result[1]]
         inactive_subdomains = [result[0] for result in results if isinstance(result, tuple) and not result[1]]
-        return active_subdomains, inactive_subdomains
+        return list(set(active_subdomains)), list(set(inactive_subdomains))
 
 if __name__ == "__main__":
-    print("Subdomainləri daxil edin (Daxil etdikdən sonra Enteri vurun):")
+    print("Domainləri daxil edin (Daxil etdikdən sonra Enteri vurun):")
     subdomains = []
     while True:
         subdomain = input()
@@ -39,12 +39,8 @@ if __name__ == "__main__":
         print(f"{Fore.RED}Aktiv Domainlər:{Style.RESET_ALL}")
         for sub in active_subdomains:
             print(f"{Fore.GREEN}{sub}{Style.RESET_ALL}")
-    else:
-        print(f"{Fore.RED}Aktiv Domain yoxdur.{Style.RESET_ALL}")
 
     if inactive_subdomains:
         print(f"\n{Fore.RED}Aktiv olmayan Domainlər:{Style.RESET_ALL}")
         for sub in inactive_subdomains:
             print(f"{Fore.GREEN}{sub}{Style.RESET_ALL}")
-    else:
-        print(f"\n{Fore.RED}Aktiv olmayan Domain yoxdur.{Style.RESET_ALL}")
